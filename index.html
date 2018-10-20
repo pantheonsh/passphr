@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style>
+            body {
+                max-width: 640px;
+                margin: 20px auto;
+            }
+
+            .wrapper, .pwd_wrapper, .pwd_options {
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+        <title>Passphr</title>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="pwd_wrapper">
+                <span class="text">Here's your passphrase:</span>
+                <input id="passphrase">
+                <button id="genbtn">Generate</button>
+            </div>
+            <div class="pwd_options">
+                
+            </div>
+        </div>
+
+        <script>
+            var words = [];
+            var textbox = document.getElementById("passphrase");
+
+            function fetchWords(callback) {
+                var r = new XMLHttpRequest();
+                r.onreadystatechange = function() {
+                    if(this.readyState == 4 && this.status == 200) {
+                        var words = JSON.parse(this.responseText);
+                        callback(words);
+                    }
+                }
+                r.open("GET", "wordlist.json", true);
+                r.send();
+            }
+
+            function genPassphrase(length) {
+                var pass = [];
+
+                for(var i = 0; i < length; i++) {
+                    var word = words[Math.floor(Math.random() * words.length)];
+                    pass.push(word);
+                }
+
+                return pass.join(" ");
+            }
+
+            function calcNumberOfPossibilities(length) {
+                return Math.pow(words.length, length);
+            }
+
+            fetchWords(function(fetchedWords) {
+                words = fetchedWords;
+            });
+            
+            document.getElementById("genbtn").addEventListener("click", function() {
+                textbox.value = genPassphrase(6);
+            });
+        </script>
+    </body>
+</html>
