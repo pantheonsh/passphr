@@ -1,4 +1,5 @@
 ![Example screenshot](/example.png)
+[Open Passphr](https://pantheonsh.github.io/passphr/) || [GitHub repository](https://github.com/pantheonsh/passphr) || [Author](https://github.com/pantheonsh/)
 
 # Passphr
 A simple, static and small passphrase generator.
