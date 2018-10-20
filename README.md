@@ -1,7 +1,10 @@
-# Passphr
-A simple, static and small passphr generator.
-
 ![Example screenshot](/example.png)
+
+# Passphr
+A simple, static and small passphrase generator.
+
+## Offline use
+This webapp uses the HTML5 Application Cache API, so it can be used when offline.
 
 ## License
 do What The Fuck you want to Public License
