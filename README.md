@@ -1,6 +1,8 @@
 # Passphr
 A simple, static and small passphr generator.
 
+![Example screenshot](/example.png)
+
 ## License
 do What The Fuck you want to Public License
 
